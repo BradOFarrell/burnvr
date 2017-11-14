@@ -1,0 +1,38 @@
+{
+  "name": "postitnotes",
+  "version": "1.0.0",
+  "description": "post it notes for a practice project",
+  "main": "index.js",
+  "engines": {
+    "node": "8.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BradOFarrell/postitnotes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BradOFarrell/postitnotes/issues"
+  },
+  "homepage": "https://github.com/BradOFarrell/postitnotes#readme",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "body-parser": "^1.18.2",
+    "concurrently": "^3.5.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "mongoose": "^4.12.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-router-dom": "^4.2.2",
+    "styled-components": "^2.2.1"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "concurrently \"nodemon server.js\" \"cd ./client  && npm start \" ",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm i && npm run build"
+  }
+}
