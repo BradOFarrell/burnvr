@@ -1,23 +1,25 @@
 const express = require('express')
 const router = express.Router()
-const { UserModel } = require('../db/schema')
+const { SceneModel } = require('../db/schema')
 
 router.get('/', async (req, res) => {
   console.log('route hit')
   try {
-    const users = await UserModel.find({})
-    res.json(users)
+    const scene = await SceneModel.find()
+    res.json(scene[0])
   } catch (err) {
     res.send(err)
   }
 })
 
+/*
+
 // Read
 router.get('/:id', async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await UserModel.findById(id)
-    res.json(user)
+    const scene = await SceneModel.findById(id)
+    res.json(scene)
   } catch (err) {
     res.send(err)
   }
@@ -50,5 +52,6 @@ router.post('/new/', async (req, res) => {
     res.send(err)
   }
 })
+*/
 
 module.exports = router

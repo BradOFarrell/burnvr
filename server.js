@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const app = express();
-const UserController = require('./routes/UserController');
+const SceneController = require('./routes/SceneController');
 mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI); //mongodb://localhost/idea-board
 
@@ -19,12 +19,12 @@ connection.on('error', (err) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/users', UserController)
+app.use('/api/scene', SceneController)
 
-app.use(express.static(__dirname+'/client/build'))
+app.use(express.static(__dirname+'/BurnVR/vr/'))
 
 app.get('*', (req,res) => {
-  res.sendFile(__dirname+'/client/build/index.html');
+  res.sendFile(__dirname+'/BurnVR/vr/index.html');
 })
 
 const PORT = process.env.PORT || 3001;
