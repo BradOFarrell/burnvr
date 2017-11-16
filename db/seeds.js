@@ -36,28 +36,28 @@ const host = "https://s3.amazonaws.com/burningmanvr360videos/"
 
 const burningMan = new SceneModel({
     panos: [
-        new PanoModel({name: "Bike Esplanade", uri: host+"bike_esplanade.mp4"}), // 0
-        new PanoModel({name: "Bike The City", uri: host+"bike_city.mp4"}), // 1
+        new PanoModel({name: "Bike The Esplanade", uri: host+"bike_esplanade.mp4"}), // 0
+        new PanoModel({name: "Bike Black Rock City", uri: host+"bike_city.mp4"}), // 1
         new PanoModel({name: "Bike Deep Playa", uri: host+"bike_deep_playa.mp4"}), // 2
-        new PanoModel({name: "Club Balcony", uri: host+"building_balcony.mp4"}), // 3
-        new PanoModel({name: "Club Entrance", uri: host+"building_entrance.mp4"}), // 4
-        new PanoModel({name: "Club Roof", uri: host+"building_roof.mp4"}), // 5
-        new PanoModel({name: "Man Burn", uri: host+"burn_man.mp4"}), // 6
-        new PanoModel({name: "Burn Night", uri: host+"burn_night.mp4"}), // 7
-        new PanoModel({name: "Fly Ranch", uri: host+"fly_ranch_geyser.mp4"}), // 8
-        new PanoModel({name: "Hot Spring", uri: host+"fly_ranch_hot_spring.mp4"}), // 9
-        new PanoModel({name: "Lighthouse Entrance", uri: host+"lighthouse_entrance.mp4"}), // 10
-        new PanoModel({name: "Fabric Staircase", uri: host+"lighthouse_fabric_stairs.mp4"}), // 11
-        new PanoModel({name: "The Library", uri: host+"lighthouse_library.mp4"}), // 12
-        new PanoModel({name: "The Tower", uri: host+"lighthouse_tower.mp4"}), // 13
-        new PanoModel({name: "Wooden Staircase", uri: host+"lighthouse_wood_stairs.mp4"}), // 14
-        new PanoModel({name: "Camp Party", uri: host+"party.mp4"}), // 15
-        new PanoModel({name: "Calm Room", uri: host+"pyramid_calm_room.mp4"}), // 16
-        new PanoModel({name: "Pyramid Entrance", uri: host+"pyramid_entrance.mp4"}), // 17
-        new PanoModel({name: "The Summit", uri: host+"pyramid_roof.mp4"}), // 18
-        new PanoModel({name: "Adorned Shrine", uri: host+"temple_decorated.mp4"}), // 19
-        new PanoModel({name: "Empty Shrine", uri: host+"temple_empty.mp4"}), // 20
-        new PanoModel({name: "Temple Entrance", uri: host+"temple_outside.mp4"}), // 21
+        new PanoModel({name: "[[ Club Balcony ]]", uri: host+"building_balcony.mp4"}), // 3
+        new PanoModel({name: "[ Club Entrance ]", uri: host+"building_entrance.mp4"}), // 4
+        new PanoModel({name: "[[ Club Roof ]]", uri: host+"building_roof.mp4"}), // 5
+        new PanoModel({name: "[[ The Man Burn ]]", uri: host+"burn_man.mp4"}), // 6
+        new PanoModel({name: "[[ Burn Night ]]", uri: host+"burn_night.mp4"}), // 7
+        new PanoModel({name: "[[ Fly Ranch ]]", uri: host+"fly_ranch_geyser.mp4"}), // 8
+        new PanoModel({name: "[[ Hot Spring ]]]", uri: host+"fly_ranch_hot_spring.mp4"}), // 9
+        new PanoModel({name: "[ Lighthouse Entrance ]", uri: host+"lighthouse_entrance.mp4"}), // 10
+        new PanoModel({name: "[[ Fabric Staircase ]]", uri: host+"lighthouse_fabric_stairs.mp4"}), // 11
+        new PanoModel({name: "[[ The Library ]]", uri: host+"lighthouse_library.mp4"}), // 12
+        new PanoModel({name: "[[ The Tower ]]", uri: host+"lighthouse_tower.mp4"}), // 13
+        new PanoModel({name: "[[ Wooden Staircase ]]", uri: host+"lighthouse_wood_stairs.mp4"}), // 14
+        new PanoModel({name: "[ Party Entrance ]", uri: host+"party.mp4"}), // 15
+        new PanoModel({name: "[[ Calm Room ]]", uri: host+"pyramid_calm_room.mp4"}), // 16
+        new PanoModel({name: "[ Pyramid Entrance ]", uri: host+"pyramid_entrance.mp4"}), // 17
+        new PanoModel({name: "[[ The Peak ]]", uri: host+"pyramid_roof.mp4"}), // 18
+        new PanoModel({name: "[[ Adorned Shrine ]]", uri: host+"temple_decorated.mp4"}), // 19
+        new PanoModel({name: "[[ Empty Shrine ]]", uri: host+"temple_empty.mp4"}), // 20
+        new PanoModel({name: "[ Temple Entrance ]", uri: host+"temple_outside.mp4"}), // 21
     ],
     portals: [
         // (Connects the above items, based on their indexes in the panos array)
@@ -83,7 +83,8 @@ const burningMan = new SceneModel({
         new PortalModel({indexA: 15, indexB: 8}),
         new PortalModel({indexA: 8, indexB: 9}),
         new PortalModel({indexA: 15, indexB: 7}),
-        new PortalModel({indexA: 7, indexB: 6})
+        new PortalModel({indexA: 7, indexB: 6}),
+        new PortalModel({indexA: 16, indexB: 18})
     ]
 })
 

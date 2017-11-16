@@ -18,7 +18,8 @@ export default class BurnVR extends React.Component {
     super();
     this.state = {
       scene: {},
-      currentPano: false
+      currentPano: false,
+      history: []
     }      
   }
   getScene = ()=>{
@@ -41,14 +42,46 @@ export default class BurnVR extends React.Component {
     console.log(this.state.currentPano);
     setTimeout(()=>{this.setState({scene: parsedScene, currentPano: parsedScene.panos[0]})}, 3000)
   }
+  usePortal = (portal)=>{
+    let tempHistory = this.state.history;
+    tempHistory.push(this.state.currentPano);
+    this.setState({currentPano: portal, history: tempHistory});
+  }
+  goBack = () => {
+    let tempHistory = this.state.history;
+    if(tempHistory.length > 0){
+      let goBackTo = tempHistory.pop();  
+      this.setState({currentPano: goBackTo, history: tempHistory});  
+    }
+  }
+  getBackButton = () => {
+    if(this.state.history.length > 0){
+      return (
+        <Text
+        style={{
+          backgroundColor: '#550000',
+          color: '#FF0000',
+          fontSize: 0.2,
+          fontWeight: '400',
+          layoutOrigin: [0.5, 0.5],
+          paddingLeft: 0.2,
+          paddingRight: 0.2,
+          textAlign: 'center',
+          textAlignVertical: 'center',
+          transform: [{translate: [0, -2, -5]}],
+        }}>
+        Go back
+      </Text>
+      );  
+    }
+  }
   componentWillMount(){
     this.getScene();
   }
   render() {
       if(!this.state.currentPano){
         return (
-          <View>
-          <View style={{backgroundColor: '#000000', flex: 0.3}} />
+          <View style={{backgroundColor: '#000000'}}>
         <Text
         style={{
           backgroundColor: '#FFF000',
@@ -66,7 +99,7 @@ export default class BurnVR extends React.Component {
         </Text>
         <Text
         style={{
-          color: '#FFFF00',
+          color: '#550000',
           fontSize: 0.4,
           fontWeight: '400',
           layoutOrigin: [0.5, 0.5],
@@ -83,8 +116,7 @@ export default class BurnVR extends React.Component {
     } else {
       return (
         <View>
-        <VideoPano source={{uri: 'https://s3.amazonaws.com/burningmanvr360videos/bike_deep_playa.mp4'}} loop={true}/>
-        <VrButton onClick={() => console.log("hi")}>
+        <VideoPano source={{uri: this.state.currentPano.uri}} loop={true}/>
         <Text
         style={{
           backgroundColor: '#FFF000',
@@ -98,60 +130,34 @@ export default class BurnVR extends React.Component {
           textAlignVertical: 'center',
           transform: [{translate: [0, -2, -5]}],
         }}>
-        You're in "TEST TEST" move to: 
+        You're in "{this.state.currentPano.name}" move to: 
       </Text>
-      </VrButton>
-      <VrButton onClick={() => console.log("Button1")}>
-        <Text
-        style={{
-          backgroundColor: '#FF0000',
-          color: '#FFFF00',
-          fontSize: 0.2,
-          fontWeight: '400',
-          layoutOrigin: [0.5, 0.5],
-          paddingLeft: 0.2,
-          paddingRight: 0.2,
-          textAlign: 'center',
-          textAlignVertical: 'center',
-          transform: [{translate: [0, -2, -5]}],
-        }}>
-        Button1 
-      </Text>
-      </VrButton>
-      <VrButton onClick={() => console.log("Button2")}>
-        <Text
-        style={{
-          backgroundColor: '#FF0000',
-          color: '#FFFF00',
-          fontSize: 0.2,
-          fontWeight: '400',
-          layoutOrigin: [0.5, 0.5],
-          paddingLeft: 0.2,
-          paddingRight: 0.2,
-          textAlign: 'center',
-          textAlignVertical: 'center',
-          transform: [{translate: [0, -2, -5]}],
-        }}>
-        Button2
-      </Text>
-      </VrButton>
-      <VrButton onClick={() => console.log("Button3")}>
-        <Text
-        style={{
-          backgroundColor: '#FF0000',
-          color: '#FFFF00',
-          fontSize: 0.2,
-          fontWeight: '400',
-          layoutOrigin: [0.5, 0.5],
-          paddingLeft: 0.2,
-          paddingRight: 0.2,
-          textAlign: 'center',
-          textAlignVertical: 'center',
-          transform: [{translate: [0, -2, -5]}],
-        }}>
-        Button3
-      </Text>
-      </VrButton>
+      {
+        this.state.currentPano.portals.map((portal)=>{
+          return (              
+            <VrButton onClick={() => this.usePortal(portal) }>
+            <Text
+            style={{
+              backgroundColor: '#FF0000',
+              color: '#FFFF00',
+              fontSize: 0.2,
+              fontWeight: '400',
+              layoutOrigin: [0.5, 0.5],
+              paddingLeft: 0.2,
+              paddingRight: 0.2,
+              textAlign: 'center',
+              textAlignVertical: 'center',
+              transform: [{translate: [0, -2, -5]}],
+            }}>
+            { portal.name } 
+          </Text>
+          </VrButton>    
+          );
+        })
+      }
+      <VrButton onClick={() => this.goBack() }>
+      { this.getBackButton() }
+      </VrButton> 
       </View>
       );      
     }   
