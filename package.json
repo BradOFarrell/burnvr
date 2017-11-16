@@ -4,7 +4,7 @@
   "description": "post it notes for a practice project",
   "main": "index.js",
   "engines": {
-    "node": "8.6.0"
+    "node": "8.9.1"
   },
   "repository": {
     "type": "git",
