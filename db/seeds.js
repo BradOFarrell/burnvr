@@ -45,7 +45,7 @@ const burningMan = new SceneModel({
         new PanoModel({name: "[[ The Man Burn ]]", uri: host+"burn_man.mp4"}), // 6
         new PanoModel({name: "[[ Burn Night ]]", uri: host+"burn_night.mp4"}), // 7
         new PanoModel({name: "[[ Fly Ranch ]]", uri: host+"fly_ranch_geyser.mp4"}), // 8
-        new PanoModel({name: "[[ Hot Spring ]]]", uri: host+"fly_ranch_hot_spring.mp4"}), // 9
+        new PanoModel({name: "[[ Hot Spring ]]", uri: host+"fly_ranch_hot_spring.mp4"}), // 9
         new PanoModel({name: "[ Lighthouse Entrance ]", uri: host+"lighthouse_entrance.mp4"}), // 10
         new PanoModel({name: "[[ Fabric Staircase ]]", uri: host+"lighthouse_fabric_stairs.mp4"}), // 11
         new PanoModel({name: "[[ The Library ]]", uri: host+"lighthouse_library.mp4"}), // 12
